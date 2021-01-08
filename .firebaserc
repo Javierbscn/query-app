@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "angular-exp-7657c": {
+      "hosting": {
+        "query-app": [
+          "angular-exp-7657c"
+        ]
+      }
+    }
+  }
+}
