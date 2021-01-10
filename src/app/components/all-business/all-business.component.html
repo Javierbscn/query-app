@@ -1,7 +1,7 @@
 <div class="d-flex justify-content-between text-center my-3">
     <div class="col-md-5 bg-secondary text-white rounded px-5 py-2">
-        <h2>Empresa Más Ventas</h2>
-        <p class="h1">$850.000</p>
+        <h2>{{ agencyMostSales.name }}</h2>
+        <p class="h1">$ {{ agencyMostSales.totalSales }}</p>
     </div>
     <div class="col-md-5 bg-secondary text-white rounded px-5 py-2">
         <h2>Mes Más Ventas</h2>
@@ -12,14 +12,14 @@
 <table class="table table-bordered w-100">
     <thead class="thead-light">
         <tr>
-            <th scope="col">Nombre Empresa</th>
-            <th scope="col">Total de ventas</th>
+            <th scope="col">Nombre Empresa <button (click)="sortByAgencys()" class="btn py-0 px-3">{{ symbolAgencys }}</button></th>
+            <th scope="col">Total de ventas <button (click)="sortBySales()" class="btn py-0 px-3">{{ symbolSales }}</button></th>
             <th scope="col">Comisión</th>
             <th scope="col">Detalle</th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let sale of salesOrdered">
+        <tr *ngFor="let sale of orderedSales">
             <td>{{ sale.nameAgency }}</td>
             <td>{{ sale.finalPrice }}</td>
             <td>{{ sale.finalPrice * 0.025 }}</td>
