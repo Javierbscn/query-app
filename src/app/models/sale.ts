@@ -3,6 +3,7 @@ export interface Sale {
   datePayment: string;
   day: string;
   finalPrice: number;
+  formatedNameAgency: string;
   hour: string;
   id: string;
   name: string;

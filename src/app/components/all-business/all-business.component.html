@@ -24,7 +24,11 @@
                 <td>{{ sale.nameAgency }}</td>
                 <td>{{ sale.finalPrice }}</td>
                 <td>{{ sale.finalPrice * 0.025 }}</td>
-                <td><a (click)="getData()" href="#" class="btn btn-secondary btn-block">Ver detalles</a></td>
+                <td>
+                    <button [routerLink]="[sale.formatedNameAgency]" class="btn btn-secondary btn-block">
+                        Ver detalles
+                    </button>
+                </td>
             </tr>
         </tbody>
     </table>
