@@ -19,11 +19,11 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>Lorem, ipsum dolor.</td>
-            <td>Lorem, ipsum dolor.</td>
-            <td>Lorem, ipsum dolor.</td>
-            <td><a href="/" class="btn btn-secondary btn-block">Ver detalles</a></td>
+        <tr *ngFor="let sale of salesOrdered">
+            <td>{{ sale.nameAgency }}</td>
+            <td>{{ sale.finalPrice }}</td>
+            <td>{{ sale.finalPrice * 0.025 }}</td>
+            <td><a (click)="getData()" href="#" class="btn btn-secondary btn-block">Ver detalles</a></td>
         </tr>
     </tbody>
 </table>
