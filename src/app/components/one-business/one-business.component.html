@@ -1,6 +1,6 @@
 <p class="py-3">
-    <a href="">Empresas</a> >
-    <span>Nombre Empresa</span>
+    <a [routerLink]="['/empresas']">Empresas</a> >
+    <span>{{ nameOfAgency }}</span>
 </p>
 
 <table class="table table-bordered w-100">
@@ -14,12 +14,12 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>Lorem, ipsum dolor.</td>
-            <td>Lorem, ipsum dolor.</td>
-            <td>Lorem, ipsum dolor.</td>
-            <td>Lorem, ipsum dolor.</td>
-            <td>Lorem, ipsum dolor.</td>
+        <tr *ngFor="let sale of salesOfAgency">
+            <td>{{ sale.name }}</td>
+            <td>{{ sale.persons }}</td>
+            <td>{{ sale.day }}</td>
+            <td>{{ sale.hour }}</td>
+            <td>{{ sale.finalPrice }}</td>
         </tr>
     </tbody>
 </table>

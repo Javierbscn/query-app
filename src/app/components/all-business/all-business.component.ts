@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SalesService } from 'src/app/services/sales.service';
+import { SalesService } from './../../services/sales.service';
 import { Sale } from './../../models/sale';
 
 @Component({
@@ -26,25 +26,22 @@ export class AllBusinessComponent implements OnInit {
 
       // add formated name agency for routing params
       this.orderedSales = this.orderedSales.map((doc) => {
-        doc.formatedNameAgency = doc.nameAgency
-                                  .toLowerCase()
-                                  .split(' ')
-                                  .join('_');
+        doc.formatedNameAgency = doc.nameAgency.split(' ').join('_');
         return doc;
       });
 
-      // get agency with most sales
+      // getting agency with most sales
       this.agencyMostSales = this.sales.reduce((acc, doc) => {
         return acc.finalPrice > doc.finalPrice ? acc : doc;
       });
 
-      // get required data from the agency with most sales
+      // getting required data from the agency with most sales
       this.agencyMostSales = this.getAgencyMostSales(this.agencyMostSales);
     });
   }
 
-  getAgencyMostSales(agencyMostSales: Sale) {
-    const name = agencyMostSales.nameAgency;
+  getAgencyMostSales(agencyBusiness: Sale) {
+    const name = agencyBusiness.nameAgency;
     let totalSales = 0;
     this.sales.forEach((doc) => {
       if (doc.nameAgency === name) {
