@@ -4,8 +4,8 @@
         <p class="h1" *ngIf="agencyMostSales">$ {{ agencyMostSales.totalSales }}</p>
     </div>
     <div class="col-md-5 bg-secondary text-white rounded my-4 px-5 py-2">
-        <h2>Mes Más Ventas</h2>
-        <p class="h1">Enero</p>
+        <h2>Más ventas durante</h2>
+        <p class="h1" *ngIf="monthMostSales">{{ monthMostSales }}</p>
     </div>
 </div>
 

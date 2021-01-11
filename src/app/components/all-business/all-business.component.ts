@@ -9,6 +9,7 @@ import { Sale } from './../../models/sale';
 })
 export class AllBusinessComponent implements OnInit {
   agencyMostSales: any;
+  monthMostSales: string;
   sales: Sale[];
   orderedSales: Sale[];
   symbolAgencys: string;
@@ -37,6 +38,9 @@ export class AllBusinessComponent implements OnInit {
 
       // getting required data from the agency with most sales
       this.agencyMostSales = this.getAgencyMostSales(this.agencyMostSales);
+
+      // getting month with most sales
+      this.monthMostSales = this.getMonthMostSales(this.sales);
     });
   }
 
@@ -79,5 +83,44 @@ export class AllBusinessComponent implements OnInit {
     }
   }
 
-  getData() {}
+  getMonthMostSales(sales: Sale[]) {
+    let totalMonths = [];
+
+    sales.forEach((doc) => {
+      const month = doc.datePayment.split(' ')[0].split('-')[1];
+      totalMonths.push(month);
+    });
+
+    totalMonths = totalMonths.reduce((acc, el) => {
+      if (acc[el]) {
+        acc[el]++;
+      } else {
+        acc[el] = 1;
+      }
+      return acc;
+    }, {});
+
+    totalMonths = Object.entries(totalMonths).reduce((acc, el) =>
+      acc[1] > el[1] ? acc : el
+    );
+
+    return this.getMonthString(totalMonths[0]);
+  }
+
+  getMonthString(month: string) {
+    let monthString: string;
+    if (month === '01') monthString = 'Enero';
+    else if (month === '02') monthString = 'Febrero';
+    else if (month === '03') monthString = 'Marzo';
+    else if (month === '04') monthString = 'Abril';
+    else if (month === '05') monthString = 'Mayo';
+    else if (month === '06') monthString = 'Junio';
+    else if (month === '07') monthString = 'Julio';
+    else if (month === '08') monthString = 'Agosto';
+    else if (month === '09') monthString = 'Septiembre';
+    else if (month === '10') monthString = 'Octubre';
+    else if (month === '11') monthString = 'Noviembre';
+    else if (month === '12') monthString = 'Diciembre';
+    return monthString;
+  }
 }
