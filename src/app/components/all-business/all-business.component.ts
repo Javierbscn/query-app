@@ -44,7 +44,7 @@ export class AllBusinessComponent implements OnInit {
     });
   }
 
-  getAgencyMostSales(agencyBusiness: Sale) {
+  getAgencyMostSales(agencyBusiness: Sale): object {
     const name = agencyBusiness.nameAgency;
     let totalSales = 0;
     this.sales.forEach((doc) => {
@@ -55,7 +55,7 @@ export class AllBusinessComponent implements OnInit {
     return { name, totalSales };
   }
 
-  sortByAgencys() {
+  sortByAgencys(): void {
     if (this.orderedSales[0].nameAgency[0].toUpperCase() !== 'A') {
       this.orderedSales = this.orderedSales.sort((a: Sale, b: Sale) => {
         this.symbolAgencys = '▼';
@@ -69,7 +69,7 @@ export class AllBusinessComponent implements OnInit {
     }
   }
 
-  sortBySales() {
+  sortBySales(): void {
     if (this.orderedSales[0].finalPrice > 500) {
       this.orderedSales = this.orderedSales.sort((a: Sale, b: Sale) => {
         this.symbolSales = '▼';
@@ -83,7 +83,7 @@ export class AllBusinessComponent implements OnInit {
     }
   }
 
-  getMonthMostSales(sales: Sale[]) {
+  getMonthMostSales(sales: Sale[]): string {
     let totalMonths = [];
 
     sales.forEach((doc) => {
@@ -107,7 +107,7 @@ export class AllBusinessComponent implements OnInit {
     return this.getMonthString(totalMonths[0]);
   }
 
-  getMonthString(month: string) {
+  getMonthString(month: string): string {
     let monthString: string;
     if (month === '01') monthString = 'Enero';
     else if (month === '02') monthString = 'Febrero';
